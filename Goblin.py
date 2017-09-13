@@ -7,3 +7,5 @@ class Goblin(object):
 		self.health -= amount_of_damage
 	def is_alive(self):
 		return self.health > 0
+	def reduce_strength(self, power_decrease):
+		self.power -= power_decrease
