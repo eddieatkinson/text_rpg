@@ -6,3 +6,7 @@ class Hero(object):
 		self.power = 5
 	def take_damage(self, amount_of_damage):
 		self.health -= amount_of_damage
+	def cheer_for_hero(self):
+		print "Fight hard, valient %s!" % self.name
+	def is_alive(self):
+		return self.health > 0

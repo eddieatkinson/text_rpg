@@ -1,6 +1,6 @@
-class Goblin(object):
+class Vampire(object):
 	def __init__(self):
-		self.name = "Goblin"
+		self.name = "Vampire"
 		self.health = 6
 		self.power = 2
 	def take_damage(self, amount_of_damage):
