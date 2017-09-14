@@ -17,3 +17,5 @@ class Hero(object):
 		self.health += health_boost_amount
 	def boost_power(self, power_boost_amount):
 		self.power += power_boost_amount
+	def collect_loot(self, loot_amount):
+		self.coins += loot_amount

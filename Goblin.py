@@ -1,9 +1,11 @@
-class Goblin(object):
-	def __init__(self):
-		self.name = "Goblin"
-		self.health = 6
-		self.power = 2
-		self.image = """
+# Get the super class.
+from Character import Character
+
+# Make Goblin a subclass of Character.
+class Goblin(Character):
+    def __init__(self):
+        super(Goblin, self).__init__('Goblin', 6, 1, 3)
+        self.image = """
            .:\:/:.
          .:\:\:/:/:.
         :.:\:\:/:/:.:
@@ -18,9 +20,9 @@ class Goblin(object):
         __\,,\ /,,/__
        (______Y______)
    """
-	def take_damage(self, amount_of_damage):
-		self.health -= amount_of_damage
-	def is_alive(self):
-		return self.health > 0
-	def reduce_strength(self, power_decrease):
-		self.power -= power_decrease
+	# def take_damage(self, amount_of_damage):
+	# 	self.health -= amount_of_damage
+	# def is_alive(self):
+	# 	return self.health > 0
+    def reduce_strength(self, power_decrease):
+        self.power -= power_decrease
