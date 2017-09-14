@@ -56,6 +56,7 @@ for monster in monsters:
 		# os.system("clear")
 		print "You have %d health and %d power." % (the_hero.health, the_hero.power)
 		print "The %s has %d health and %d power." % (monster.name, monster.health, monster.power)
+		print "%s" % monster.image
 		print "What do you want to do?"
 		print "1. fight %s" % monster.name
 		print "2. do nothing"
@@ -73,7 +74,7 @@ for monster in monsters:
 			# Hero is going to stand there like an idiot
 			monster_attack()
 		elif user_input == "3":
-			print "Goodbye, coward! You remind me of my in-laws."
+			print "Goodbye, coward! You remind me of my you-know-who."
 			# Call break to end the while loop.
 			break
 		elif user_input == "4":
@@ -89,6 +90,7 @@ for monster in monsters:
 					if sword.price > the_hero.coins:
 						print "You do not have enough coins for that!"
 					else:
+						print "%s" % sword.image
 						print "Excellent choice! You are more powerful now!"
 						the_hero.boost_power(sword.power_boost)
 						the_hero.spend_coins(sword.price)
@@ -98,6 +100,7 @@ for monster in monsters:
 					elif monster.power < shield.enemy_power_decrease:
 						print "The %s is too weak for your %s!" % (monster.name, shield.name)
 					else:
+						print "%s" % shield.image
 						print "Excellent choice! You are less prone to damage now!"
 						monster.reduce_strength(shield.enemy_power_decrease)
 						the_hero.spend_coins(shield.price)
@@ -105,6 +108,7 @@ for monster in monsters:
 					if potion.price > the_hero.coins:
 						print "You do not have enough coins for that!"
 					else:
+						print "%s" % potion.image
 						print "Excellent choice! You are have greater health now!"
 						the_hero.boost_health(potion.health_boost)
 						the_hero.spend_coins(potion.price)
