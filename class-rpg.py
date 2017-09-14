@@ -1,9 +1,14 @@
+# Contrib modules
+# Core
 import os
+from random import randint
+# 3rd party (we don't have any)
+# pygame, for example
 
-from Hero import Hero # We made this module! File 'Hero', class 'Hero' within.
+#Custom modules (we write these)
+from Hero import Hero # We made this! File named 'Hero', class 'Hero' within.
 from Goblin import Goblin # We made this, too!
 from Vampire import Vampire
-from random import randint
 from Items import Sword, Shield, Potion
 
 # Now we instantiate a hero object from the Hero class:
@@ -22,13 +27,13 @@ potion = Potion()
 
 def monster_attack():
 # Goblins turn to attack!! (Only if he's still alive)
-	if monster.health > 0:
+	if monster.is_alive():
 		# Just like the goblin, the hero should be changing its own stuff.
 		# So... call take_damage on the hero.
 		the_hero.take_damage(monster.power)
 		print "The %s hit you for %d damage!" % (monster.name, monster.power)
 		# Goblin has attacked. Now check to see if hero is still alive.
-		if the_hero.health <= 0:
+		if not the_hero.is_alive():
 			print "You have been killed by the weak %s. Shame on you!" % monster.name
 
 # Ask user for his/her name.
