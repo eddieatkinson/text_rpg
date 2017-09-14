@@ -4,8 +4,7 @@ from Character import Character
 # Make Goblin a subclass of Character.
 class Goblin(Character):
     def __init__(self):
-        super(Goblin, self).__init__('Goblin', 6, 1, 3)
-        self.image = """
+        super(Goblin, self).__init__('Goblin', 6, 2, 4, """
            .:\:/:.
          .:\:\:/:/:.
         :.:\:\:/:/:.:
@@ -19,10 +18,4 @@ class Goblin(Character):
        WW(  (   )  )WW
         __\,,\ /,,/__
        (______Y______)
-   """
-	# def take_damage(self, amount_of_damage):
-	# 	self.health -= amount_of_damage
-	# def is_alive(self):
-	# 	return self.health > 0
-    def reduce_strength(self, power_decrease):
-        self.power -= power_decrease
+            """)

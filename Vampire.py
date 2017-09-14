@@ -4,11 +4,7 @@ from Character import Character
 # Make a subclass.
 class Vampire(Character):
 	def __init__(self):
-		super(Vampire, self).__init__("Vampire", 15, 1, 3)
-		# self.name = "Vampire"
-		# self.health = 6
-		# self.power = 2
-		self.image = """
+		super(Vampire, self).__init__("Vampire", 10, 3, 4, """
                      __.......__
                   .-:::::::::::::-.
                 .:::''':::::::''':::.
@@ -26,10 +22,4 @@ class Vampire(Character):
              .'`-.__ .'`-._.-'`. __.-'`.
            .'       `.         .'       `.
          .'           `-.   .-'           `.
-"""
-	# def take_damage(self, amount_of_damage):
-	# 	self.health -= amount_of_damage
-	# def is_alive(self):
-	# 	return self.health > 0
-	def reduce_strength(self, power_decrease):
-		self.power -= power_decrease
+			""")

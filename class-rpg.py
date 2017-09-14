@@ -9,15 +9,18 @@ from random import randint
 from Hero import Hero # We made this! File named 'Hero', class 'Hero' within.
 from Goblin import Goblin # We made this, too!
 from Vampire import Vampire
+from Medic import Medic
+from Shadow import Shadow
+from Zombie import Zombie
+from Wizard import Wizard
+from Dragon import Dragon
 from Sword import Sword
 from Shield import Shield
 from Potion import Potion
 
 # Now we instantiate a hero object from the Hero class:
 the_hero = Hero()
-# Ditto
-# a_goblin = Goblin()
-# a_vampire = Vampire()
+level = 1 # We start on this level.
 
 # Make a list to hold our monsters.
 monsters = []
@@ -30,17 +33,23 @@ potion = Potion()
 def monster_attack():
 # Goblins turn to attack!! (Only if he's still alive)
 	if monster.is_alive():
+		monster.print_image()
 		# Just like the goblin, the hero should be changing its own stuff.
 		# So... call take_damage on the hero.
-		monster.print_image()
 		the_hero.take_damage(monster.power)
 		print "The %s hit you for %d damage!" % (monster.name, monster.power)
 		# Goblin has attacked. Now check to see if hero is still alive.
 		if not the_hero.is_alive():
 			print "You have been killed by the weak %s. Shame on you!" % monster.name
+		#if monster.name == "Medic":
+		monster.recuperate()
+		monster.special_pwr()
 	else:
-		print "You have defeated the %s! You will receive %s coins!" % (monster.name, monster.loot)
+		print "You have defeated the %s! You receive %s coins!" % (monster.name, monster.loot)
 		the_hero.collect_loot(monster.loot)
+
+def round_down(number, divisor):
+	return number - (number % divisor)
 # Ask user for his/her name.
 print "What is thy name, brave adventurer?"
 the_hero.name = raw_input("> ")
@@ -49,21 +58,41 @@ the_hero.cheer_for_hero()
 print "How many monsters are you willing to fight, brave %s?" % the_hero.name
 number_of_enemies = int(raw_input("> "))
 
-for i in range(0, number_of_enemies):
-	rand_num = randint(0, 1)
-	if rand_num == 1:
-		monsters.append(Goblin())
-	else:
-		monsters.append(Vampire())
+def monster_gen():
+	for i in range(0, number_of_enemies):
+		rand_num = randint(0, 1)
+		if rand_num == 0:
+			monsters.append(Goblin())
+		else:
+			monsters.append(Vampire())
+
+def monster_gen2():
+	for i in range(0, number_of_enemies):
+		rand_num = randint(0, 1)
+		if rand_num == 0:
+			monsters.append(Medic())
+		else:
+			monsters.append(Shadow())
+
+def monster_gen3():
+	for i in range(0, number_of_enemies):
+		rand_num = randint(0, 2)
+		if rand_num == 0:
+			monsters.append(Zombie())
+		elif rand_num == 1:
+			monsters.append(Wizard())
+		else:
+			monsters.append(Dragon())
+
+monster_gen()
 
 # print monsters
 
 # We need to loop through all of the monsters.
 for monster in monsters:
 	# Run the game as long as BOTH characters have health (are alive)
-	while monster.is_alive() and the_hero.is_alive():
+	while monster.is_alive() and the_hero.is_alive() and level < 4:
 		# game is on!
-		# os.system("clear")
 		print "You have %d health and %d power." % (the_hero.health, the_hero.power)
 		print "The %s has %d health and %d power." % (monster.name, monster.health, monster.power)
 		# print "%s" % monster.image
@@ -130,5 +159,23 @@ for monster in monsters:
 
 		else:
 			print "Invalid input %s" % user_input
+		if the_hero.coins >=20 and round_down(the_hero.coins, 10) / (10 * (level + 1)) == 1:
+			print ""
+			print "*" * 45
+			print "* Congratulations! You have passed Level %s! *" % level
+			print "*" * 45
+			level += 1
+			if level > 3:
+				print "You have achieved the highest level, %s! You have won!" % the_hero.name
+				brave = False
+			else:
+				print "\nYou will receive 5 health!\n"
+				print "..."
+				print "...and some new MONSTERS!"
+				the_hero.boost_health(5)
+			if level == 2:
+				monster_gen2()
+			elif level == 3:
+				monster_gen3()
 if brave:
 	print "You have killed all of your enemies! Well done, skilled %s!" % the_hero.name
