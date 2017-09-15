@@ -4,7 +4,7 @@ from Character import Character
 # Make Goblin a subclass of Character.
 class Goblin(Character):
     def __init__(self):
-        super(Goblin, self).__init__('Goblin', 6, 2, 4, """
+        super(Goblin, self).__init__('Goblin', 6, 2, 2, """
            .:\:/:.
          .:\:\:/:/:.
         :.:\:\:/:/:.:

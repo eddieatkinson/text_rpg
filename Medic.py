@@ -4,7 +4,7 @@ from Character import Character
 # Make a subclass.
 class Medic(Character):
 	def __init__(self):
-		super(Medic, self).__init__("Medic", 10, 3, 4, """
+		super(Medic, self).__init__("Medic", 10, 4, 4, """
               _|/
             ."   ".
         __ /(o)-(o)\\

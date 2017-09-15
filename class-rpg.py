@@ -29,6 +29,7 @@ monsters = []
 sword = Sword()
 shield = Shield()
 potion = Potion()
+brave = False
 
 def monster_attack():
 # Goblins turn to attack!! (Only if he's still alive)
@@ -41,6 +42,7 @@ def monster_attack():
 		# Goblin has attacked. Now check to see if hero is still alive.
 		if not the_hero.is_alive():
 			print "You have been killed by the weak %s. Shame on you!" % monster.name
+			brave = False
 		#if monster.name == "Medic":
 		monster.recuperate()
 		monster.special_pwr()
@@ -113,7 +115,7 @@ for monster in monsters:
 		elif user_input == "2":
 			# Hero is going to stand there like an idiot
 			monster_attack()
-			brave = True
+			# brave = True
 		elif user_input == "3":
 			print "You coward! You remind me of my ex-wife."
 			brave = False
@@ -171,7 +173,7 @@ for monster in monsters:
 			else:
 				print "\nYou will receive 5 health!\n"
 				print "..."
-				print "...and some new MONSTERS!"
+				print "...and some new MONSTERS!\n"
 				the_hero.boost_health(5)
 			if level == 2:
 				monster_gen2()

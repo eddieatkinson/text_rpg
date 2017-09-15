@@ -4,7 +4,7 @@ from Character import Character
 # Make a subclass.
 class Vampire(Character):
 	def __init__(self):
-		super(Vampire, self).__init__("Vampire", 10, 3, 4, """
+		super(Vampire, self).__init__("Vampire", 8, 3, 4, """
                      __.......__
                   .-:::::::::::::-.
                 .:::''':::::::''':::.
